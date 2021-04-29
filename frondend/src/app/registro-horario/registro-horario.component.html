@@ -1,0 +1,58 @@
+<body>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+
+        <div class="container">
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="assets/img/logo.jpg" alt="login" class="login-card-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+
+
+                            <form action="">
+                                <h3>Registro De Horario</h3>
+                                <div class="form-group" id="be">
+                                    <!-- cargar origen destino respecto al origen -->
+                                    <label for="origen" class="form-control">Origen: </label>
+                                    <input type="text" class="form-control" placeholder="Ejm: Oruro">
+                                    <label for="destino" class="form-control">Destino: </label>
+                                    <input type="text" class="form-control" placeholder="Ejm: Cochabamba">
+                                </div>
+                                <div class="form-group" id="be">
+                                    <label class="form-control">Fecha: </label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="form-group" id="be">
+                                    <label for="tipo" class="form-control">Tipo </label>
+                                    <select name="tipo" id="tipo" class="form-control">
+                                        <option value="normal">Bus Normal</option>
+                                        <option value="cama">Bus Cama</option>
+                                        <option value="leito">Bus Leito</option>
+                                
+                                    </select>
+
+                                </div>
+                                <div class="form-group" id="be">
+                                    <label class="form-control">Hora: </label>
+                                    <!-- cargar horarios respecto al dia con su precio -->
+                                    <input type="time" class="form-control">
+                                </div>
+                                <div class="form-group" id="be">
+                                    <label class="form-control">Precio: </label>
+                                    <input type="text" class="form-control" placeholder="Precio">
+                                </div>
+
+                                <input id="bo2" type="submit" value="Registrar">
+                            </form>
+                            <form action="index.html">
+                                <input id="bo1" type="submit" value="Cancelar">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
