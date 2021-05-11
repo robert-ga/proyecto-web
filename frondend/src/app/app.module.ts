@@ -17,6 +17,11 @@ import { ModificarRutaComponent } from './modificar-ruta/modificar-ruta.componen
 import { RegistroHorarioComponent } from './registro-horario/registro-horario.component';
 import { MostrarHorarioComponent } from './mostrar-horario/mostrar-horario.component';
 import { ModificarHorarioComponent } from './modificar-horario/modificar-horario.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FiltercalendarioPipe } from './pipes/filtercalendario.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,10 @@ import { ModificarHorarioComponent } from './modificar-horario/modificar-horario
     ModificarRutaComponent,
     RegistroHorarioComponent,
     MostrarHorarioComponent,
-    ModificarHorarioComponent
+    ModificarHorarioComponent,
+    InicioComponent,
+    FilterPipe,
+    FiltercalendarioPipe
 
   ],
   imports: [
@@ -40,6 +48,8 @@ import { ModificarHorarioComponent } from './modificar-horario/modificar-horario
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    HttpClientModule,
+    FormsModule,
     NgbModule
   ],
   providers: [],

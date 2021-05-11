@@ -9,44 +9,48 @@
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
-
-
-                            <form action="">
+                            <form>
                                 <h3>Modificar Horario</h3>
                                 <div class="form-group" id="be">
                                     <!-- cargar origen destino respecto al origen -->
                                     <label for="origen" class="form-control">Origen: </label>
-                                    <input type="text" class="form-control" readonly="readonly">
+                                    <input [(ngModel)]="buses.origenbus" type="text" class="form-control" name="origenbus" placeholder="Ejm: Oruro" readonly="readonly">
                                     <label for="destino" class="form-control">Destino: </label>
-                                    <input type="text" class="form-control" readonly="readonly">
+                                    <input [(ngModel)]="buses.destinobus" type="text" class="form-control" name="destinobus" placeholder="Ejm: Cochabamba" readonly="readonly">
                                 </div>
                                 <div class="form-group" id="be">
                                     <label class="form-control">Fecha: </label>
-                                    <input type="date" class="form-control">
-                                </div>
-                                <div class="form-group" id="be">
-                                    <label for="tipo" class="form-control">Tipo </label>
-                                    <select name="tipo" id="tipo" class="form-control">
-                                        <option value="normal">Bus Normal</option>
-                                        <option value="cama">Bus Cama</option>
-                                        <option value="leito">Bus Leito</option>
-                                
-                                    </select>
-
+                                    <input [(ngModel)]="buses.fecha" type="date" class="form-control" name="fecha" readonly="readonly">
                                 </div>
                                 <div class="form-group" id="be">
                                     <label class="form-control">Hora: </label>
                                     <!-- cargar horarios respecto al dia con su precio -->
-                                    <input type="time" class="form-control">
+                                    <input [(ngModel)]="buses.hora" type="time" class="form-control" name="hora">
                                 </div>
                                 <div class="form-group" id="be">
-                                    <label class="form-control">Precio: </label>
-                                    <input type="text" class="form-control" placeholder="Precio">
+                                    <label class="form-control">Nombre Bus: </label>
+                                    <input [(ngModel)]="buses.nombrebus" type="text" class="form-control" placeholder="Nombre de bus" name="nombrebus">
+                                </div>
+                                <div class="form-group" id="be">
+                                    <label for="tipo" class="form-control">Tipo </label>
+                                    <select [(ngModel)]="buses.tipobus" name="tipo" id="tipo" class="form-control" name="tipobus" readonly="readonly">
+                                        <option value="Bus Normal">Bus Normal</option>
+                                        <option value="Bus Cama">Bus Cama</option>
+                                        <option value="Bus Leito">Bus Leito</option>
+                                
+                                    </select>
+
                                 </div>
 
-                                <input id="bo2" type="submit" value="Registrar">
+                                <div class="form-group" id="be">
+                                    <label class="form-control">Precio: </label>
+                                    <input [(ngModel)]="buses.precio" type="text" class="form-control" placeholder="Precio" name="precio">
+                                </div>
+                                <div>
+                                    <button (click)="modificar()" id="bo2" type="button">Editar</button>
+                                </div>
                             </form>
-                            <form action="index.html">
+                            <form>
                                 <input id="bo1" type="submit" value="Cancelar" routerLink="/Mostrar_Horario">
                             </form>
                         </div>

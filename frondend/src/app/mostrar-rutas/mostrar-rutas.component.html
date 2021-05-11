@@ -1,45 +1,39 @@
-<div class="form-group" id="be">
-    <label for="origen" class="form-control">Ruta De:  </label>
-    <select name="origen" id="origen" class="form-control">
-        <option value="Oruro">Oruro</option>
-        <option value="Potosi">Potosi</option>
-        <option value="Cochabamba">Cochabamba</option>
-        <option value="La Paz">La Paz</option>
-        <option value="Chuquisaca">Chuquisaca</option>
-        <option value="Tarija">Tarija</option>
-        <option value="Santa Cruz">Santa Cruz</option>
-        <option value="Beni">Beni</option>
-        <option value="Pando">Pando</option>
-    </select>
-</div>
-<div>
-    <h1>Rutas Registradas</h1>
-    <table class="table">
-        <thead class="thead-dark" id="cabe">
-            <tr>
-                <th scope="col">Origen</th>
-                <th scope="col">Destino</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Hora</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Oruro</td>
-                <td>Potosi</td>
-                <td>05/05/2021</td>
-                <td>08:00</td>
-                <td>Bus Cama</td>
-                <td>150</td>
-                <td class="form-group">
-                    <input type="button" id="bo2" value="modificar" routerLink="/Mostrar_Rutas/Modificar_Ruta">
-                    <input type="button" id="bo1" value="Eliminar">
-                </td>
-            </tr>
+<div class="container">
+    <div class="form-group" id="be">
+        <label for="origen" class="form-control">Rutas De:  </label>
+        <select id="origen" class="form-control" name="filterPost" [(ngModel)]="filterPost">
+            <option value="todos">todos</option>
+            <option *ngFor="let ruta of RutasListas">{{ruta.origen}}</option>          
+        </select>
+    </div>
+    <div>
+        <button type="button" class="btn btn-dark" routerLink="/Registrar_Ruta">Registrar</button>
+    </div>
+    <div>
+        <h1>Rutas Registradas</h1>
+        <table class="table">
+            <thead class="thead-dark" id="cabe">
+                <tr>
+                    <th scope="col">Origen</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody class="thead-dark" id="cabe">
+                <tr *ngFor="let ruta of RutasListas | filter:filterPost">
+                    <td>{{ruta.origen}}</td>
+                    <td>{{ruta.destino}}</td>
 
-        </tbody>
-    </table>
+                    <td>
+                        <button (click)="modificar(ruta.id_ruta)" type="button" class="btn btn-primary">Editar</button>
+                    </td>
+                    <td>
+                        <button (click)="eliminar(ruta.id_ruta)" type="button" class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
 </div>
