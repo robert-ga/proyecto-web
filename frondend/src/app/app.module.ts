@@ -19,9 +19,11 @@ import { MostrarHorarioComponent } from './mostrar-horario/mostrar-horario.compo
 import { ModificarHorarioComponent } from './modificar-horario/modificar-horario.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FiltercalendarioPipe } from './pipes/filtercalendario.pipe';
+import { FilterdestinosPipe } from './pipes/filterdestinos.pipe';
+import { CalenService } from './SERVICIOS/calen.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { FiltercalendarioPipe } from './pipes/filtercalendario.pipe';
     ModificarHorarioComponent,
     InicioComponent,
     FilterPipe,
-    FiltercalendarioPipe
+    FiltercalendarioPipe,
+    FilterdestinosPipe
 
   ],
   imports: [
@@ -50,9 +53,12 @@ import { FiltercalendarioPipe } from './pipes/filtercalendario.pipe';
     MatListModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    CalenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

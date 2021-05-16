@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router , ActivatedRoute} from '@angular/router';
 import { Ruta, RutasService } from '../SERVICIOS/rutas.service';
+import Swal from 'sweetalert2';
+import {FormGroup, Validators, FormBuilder, FormControl, ReactiveFormsModule, FormsModule} from '@angular/forms' 
 
 @Component({
   selector: 'app-modificar-ruta',
@@ -13,7 +15,20 @@ export class ModificarRutaComponent implements OnInit {
     origen:'',
     destino:''
   };
-  constructor(private RutasService:RutasService, private router:Router, private activaRoute:ActivatedRoute) { }
+  namePattern: any=/^[a-z\s]+$/
+  createFormGroup(){
+
+    return new FormGroup({
+
+      origen: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(this.namePattern)]),
+
+      destino:  new FormControl('', [Validators.required, Validators.minLength(3),  Validators.pattern(this.namePattern)]),
+    })
+  }
+  registroForm: FormGroup;
+  constructor(private RutasService:RutasService, private router:Router, private activaRoute:ActivatedRoute) {
+    this.registroForm=this.createFormGroup()
+   }
 
   ngOnInit(): void {
     const id_entrada = <string>this.activaRoute.snapshot.params.id;
@@ -33,12 +48,38 @@ export class ModificarRutaComponent implements OnInit {
   }
   modificar()
   {
-    this.RutasService.editRuta(this.ruta.id_ruta, this.ruta).subscribe(
-      res=>{
-        console.log(res);
-      },
-      err=>console.log(err)
-    );
-    this.router.navigate(['/Mostrar_Rutas'])
+    if(this.registroForm.valid){
+      Swal.fire({
+        icon: 'success',
+  
+            title: 'Se Modifico la Ruta!',
+  
+            showConfirmButton: false,
+  
+            timer: 2000     
+      })
+      this.RutasService.editRuta(this.ruta.id_ruta, this.ruta).subscribe(
+        res=>{
+          console.log(res);
+        },
+        err=>console.log(err)
+      );
+      this.router.navigate(['/Mostrar_Rutas'])
+    }else{
+      Swal.fire({
+        icon: 'error',
+  
+            title: 'Ingrese todos los campos requeridos',
+  
+            showConfirmButton: false,
+  
+            timer: 2000
+        
+      })
+    }
+    
   }
+  get origen(){return this.registroForm.get('origen');}
+
+  get destino(){return this.registroForm.get('destino');}
 }
